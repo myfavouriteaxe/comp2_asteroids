@@ -26,6 +26,28 @@ public class Asteroide {
 		this.vivo = true;
 	}
 	
+	public void mover(Jogo jogo, double dt) {
+		if(!vivo) {
+			return;
+		}
+		// Movimentação simples
+		x += vx * dt;
+		y += vy * dt;
+		// Se asteróide sair da tela, volta do outro lado
+		if(x > jogo.getLargura()) {
+			x = 0;
+		} else if (x < 0) {
+			x = jogo.getLargura();
+		}
+		if(y > jogo.getAltura()) {
+			y = 0;
+		} else if (y < 0) {
+			y = jogo.getAltura();
+		}
+		// Giro do asteróide
+		dir += vr * dt;
+	}
+	
 	public void desenhar(Tela t) {
 		// Não desenha se o asteróide foi destruído
 		if(!vivo) { 
