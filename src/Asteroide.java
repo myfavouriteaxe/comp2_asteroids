@@ -18,9 +18,9 @@ public class Asteroide {
 		this.y = Math.random() * 500;
 		this.tamanho = (int) Math.round(Math.random() * 3) + 1; // Tamanho vai de 1 a 4
 		
-		this.vx = Math.random() * 300;
-		this.vy = Math.random() * 300;
-		this.vr = Math.random() * 2*Math.PI;
+		this.vx = Math.random() * 300 + 1;
+		this.vy = Math.random() * 300 + 1;
+		//this.vr = Math.random() * 2*Math.PI;
 		
 		this.cor = (int) Math.round(Math.random() * 10);
 		this.vivo = true;
