@@ -2,7 +2,7 @@ import java.util.Set;
 import java.util.HashSet;
 public class Jogo {
 	// Conjunto de asteroides
-	Set<Asteroide> asteroids = new HashSet<Asteroide>();
+	Set<Asteroide> asteroides = new HashSet<Asteroide>();
 	// Nave
 	Nave nave = new Nave();
 	
@@ -12,7 +12,7 @@ public class Jogo {
 	public Jogo() {
 		// Instancia os asteroides e os adiciona ao hashset
 		for(int i = 0; i < 6; i++) {
-			this.asteroids.add(new Asteroide());
+			this.asteroides.add(new Asteroide());
 		}
 	}
 	
@@ -34,15 +34,32 @@ public class Jogo {
 	
 	public void tique(Set<String> teclas, double dt) {
 		// Move os asteroides do hashset
-		for (Asteroide asteroide : this.asteroids) {
+		for (Asteroide asteroide : this.asteroides) {
 			asteroide.mover(this, dt);
+		}
+		
+		nave.move(this, dt);
+		
+		// Aceleração da nave
+		if (teclas.contains("up")) {
+			nave.motorLigado = true ;
+			nave.acelera(dt);
+		} else {
+			nave.motorLigado = false;
+		}
+		// Gira a nave
+		if (teclas.contains("left")) {
+			nave.virarEsquerda(dt);
+		}
+		if (teclas.contains("right")) {
+			nave.virarDireita(dt);
 		}
 		
 	}
 	
 	public void desenhar(Tela tela) {
 		// Desenha os asteroides do hashset
-		for (Asteroide asteroide : this.asteroids) {
+		for (Asteroide asteroide : this.asteroides) {
 			asteroide.desenhar(tela);
 		}
 		
