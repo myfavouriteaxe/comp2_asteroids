@@ -1,15 +1,17 @@
 
 public class Nave {
 	double x, y, dir;
-	double vx, vy;
+	double xBico, yBico;
+    double vx, vy;
 	boolean motorLigado;
 	int aceleracao = 100;
 	int velocidadeMax = 200;
-	
+
 	
 	public Nave () {
-		this.x = 400;
+		this.x = this.xBico = 400;
 		this.y = 300;
+        this.yBico = 318;
 		this.vx = this.vy = 0;
 		this.motorLigado = false;
 		
@@ -47,6 +49,10 @@ public class Nave {
 		} else if (y < 0) {
 			y = jogo.getAltura();
 		}
+
+        // Reposiciona as coordenadas do bico da nave
+        xBico = (x+25) + Math.sin(dir)*18;
+        yBico = (y+30) - Math.cos(dir)*18;
 	}
 	
 	// Giro da nave

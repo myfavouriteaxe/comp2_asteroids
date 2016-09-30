@@ -6,7 +6,10 @@ public class Jogo {
 	Set<Tiro> tiros = new HashSet<Tiro>();
 	// Nave
 	Nave nave = new Nave();
-	
+
+    // Conjuntos de elementos fora do jogo
+    Set<Tiro> tirosFora = new HashSet<Tiro>();
+
 	// Atributos gerais do jogo
 	int vidas = 3;
 	

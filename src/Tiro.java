@@ -5,10 +5,10 @@ public class Tiro {
 	Cor cor;
 	
 	public Tiro (Nave n) {
-		this.x = n.x;
-		this.y = n.y + 18; // Correção pro tiro ser instanciado na ponta da nave
+		this.x = n.xBico;
+		this.y = n.yBico; // Correção pro tiro ser instanciado na ponta da nave
 		this.cor = new Cor(255, 255, 255);
-		
+
 		this.vx = 700*Math.sin(n.dir) + n.vx;
 		this.vy = -700*Math.cos(n.dir) + n.vy;
 	}
