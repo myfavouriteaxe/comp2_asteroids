@@ -1,8 +1,9 @@
 import java.util.Set;
 import java.util.HashSet;
 public class Jogo {
-	// Conjunto de asteroides
+	// Conjunto de asteroides e tiros
 	Set<Asteroide> asteroides = new HashSet<Asteroide>();
+	Set<Tiro> tiros = new HashSet<Tiro>();
 	// Nave
 	Nave nave = new Nave();
 	
@@ -29,13 +30,19 @@ public class Jogo {
 	}
 	
 	public void tecla(String tecla) {
-		
+		if (tecla.equals(" ")) {
+			tiros.add(new Tiro(nave));
+		}
 	}
 	
 	public void tique(Set<String> teclas, double dt) {
 		// Move os asteroides do hashset
 		for (Asteroide asteroide : this.asteroides) {
 			asteroide.mover(this, dt);
+		}
+		// Move os tiros
+		for (Tiro tiro : this.tiros) {
+			tiro.move(dt);
 		}
 		
 		nave.move(this, dt);
@@ -61,6 +68,10 @@ public class Jogo {
 		// Desenha os asteroides do hashset
 		for (Asteroide asteroide : this.asteroides) {
 			asteroide.desenhar(tela);
+		}
+		// Desenha os tiros
+		for (Tiro tiro : this.tiros) {
+			tiro.desenhar(tela);
 		}
 		
 		// Desenha a nave
