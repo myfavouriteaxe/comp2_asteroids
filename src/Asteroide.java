@@ -7,7 +7,7 @@ public class Asteroide {
 	double vx, vy, vr;
 	double dir;
 	boolean vivo;
-	
+
 	// Relativos diretamente ao sprite
 	int xSprite, ySprite, largSprite, altSprite;
 		
@@ -20,7 +20,7 @@ public class Asteroide {
 		
 		this.vx = Math.random() * 300 + 1;
 		this.vy = Math.random() * 300 + 1;
-		this.vr = Math.random() * 2*Math.PI;
+		//this.vr = Math.random() * 2*Math.PI;
 		
 		this.cor = (int) Math.round(Math.random() * 10);
 		this.vivo = true;
