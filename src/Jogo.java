@@ -7,13 +7,18 @@ public class Jogo {
 	// Nave
 	Nave nave = new Nave();
 
-    // Conjuntos de elementos fora do jogo
+	// Asteroides a incluir apos a destruiçao de um maior
+	Set<Asteroide> asteroidesNovos = new HashSet<Asteroide>();
+    // Conjuntos de elementos fora do jogo pra serem removidos
 	Set<Asteroide> asteroidesFora = new HashSet<Asteroide>();
 	Set<Tiro> tirosFora = new HashSet<Tiro>();
 
 	// Atributos gerais do jogo
 	boolean vivo = true;
 	int vidas = 3;
+	int pontos = 0;
+	double asteroidesSpawnTempo = 0;
+	int asteroidesDestruidos = 0;
 	boolean cooldown = false;
 	double cooldownTempo = 0;
 	
@@ -48,13 +53,46 @@ public class Jogo {
 			vivo = false;
 		}
 
-		// Teste de colisao entre asteroide e nave
 		for (Asteroide asteroide : asteroides) {
+			// Teste de colisao entre asteroide e nave
 			if (vivo) {
 				if (Colisao.testaColisaoNaveAsteroide(nave, asteroide)) {
 					vidas--;
+					asteroidesDestruidos++;
 					asteroidesFora.add(asteroide);
 					nave = new Nave();
+				}
+			}
+
+			// Teste de colisao entre tiro e asteroide
+			for (Tiro tiro : tiros) {
+				if (Colisao.testaColisaoTiroAsteroide(tiro, asteroide)) {
+					//pontos += 20;
+					asteroidesDestruidos++;
+					asteroidesFora.add(asteroide);
+					tirosFora.add(tiro);
+					switch (asteroide.tamanho) {
+						// Pontuaçao maior quanto menor for o asteroide
+						case 1:
+							pontos += 40;
+							break;
+						case 2:
+							pontos += 30;
+							break;
+						case 3:  // Dois asteroides de tamanho 1 com direçoes opostas
+							asteroidesNovos.add(new Asteroide(asteroide.x, asteroide.y, asteroide.vx, -asteroide.vy, 1, asteroide.cor));
+							asteroidesNovos.add(new Asteroide(asteroide.x, asteroide.y, -asteroide.vx, asteroide.vy, 1, asteroide.cor));
+							pontos += 20;
+							break;
+						case 4:  // Um asteroide de tamanho 2 e outro de 1
+							asteroidesNovos.add(new Asteroide(asteroide.x, asteroide.y, asteroide.vx, -asteroide.vy, 2, asteroide.cor));
+							asteroidesNovos.add(new Asteroide(asteroide.x, asteroide.y, -asteroide.vx, asteroide.vy, 1, asteroide.cor));
+							pontos += 10;
+							break;
+					}
+					if (pontos % 1000 == 0) {
+						vidas++;
+					}
 				}
 			}
 		}
@@ -91,7 +129,7 @@ public class Jogo {
 		// Mecanica de cooldown pra evitar spamm de tiros
 		if (cooldown) {
 			cooldownTempo += dt;
-			if (cooldownTempo >= 0.5) {
+			if (cooldownTempo >= 0.125) {
 				cooldown = false;
 				cooldownTempo = 0;
 			}
@@ -107,9 +145,34 @@ public class Jogo {
 		if (tirosFora.size() > 20) {
 			tirosFora = new HashSet<Tiro>();
 		}
+		// Dois novos asteroides a cada 5 segundos
+		asteroidesSpawnTempo += dt;
+		if (asteroidesSpawnTempo >= 10) {
+			for (int i = 0; i < 2; i++) {
+				asteroidesNovos.add(new Asteroide());
+			}
+			asteroidesSpawnTempo = 0;
+		}
+
+		if (asteroidesDestruidos >= 3) {
+			asteroidesNovos.add(new Asteroide());
+			asteroidesDestruidos = 0;
+		}
+
+		// Inclui os asteroides novos no jogo
+		asteroides.addAll(asteroidesNovos);
+		asteroidesNovos = new HashSet<Asteroide>();
 	}
 	
 	public void desenhar(Tela tela) {
+		// Desenha as informaçoes na tela
+		tela.texto(String.valueOf(vidas), 730, 50, 40, Cor.BRANCO);
+		tela.texto(String.valueOf(pontos), 50, 50, 40, Cor.BRANCO);
+
+		if (!vivo) {
+			tela.texto("FIM DE JOGO", 150, 300, 70, Cor.BRANCO);
+		}
+
 		// Desenha os asteroides do hashset
 		for (Asteroide asteroide : this.asteroides) {
 			asteroide.desenhar(tela);

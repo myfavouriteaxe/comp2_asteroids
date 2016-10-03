@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e2c3b99-be6e-41e7-8790-2b2b6ceca7ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Colisao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Asteroide.class" afterPath="$PROJECT_DIR$/bin/Asteroide.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Jogo.class" afterPath="$PROJECT_DIR$/bin/Jogo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Nave.class" afterPath="$PROJECT_DIR$/bin/Nave.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Asteroide.java" afterPath="$PROJECT_DIR$/src/Asteroide.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Colisao.java" afterPath="$PROJECT_DIR$/src/Colisao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jogo.java" afterPath="$PROJECT_DIR$/src/Jogo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nave.java" afterPath="$PROJECT_DIR$/src/Nave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tiro.java" afterPath="$PROJECT_DIR$/src/Tiro.java" />
     </list>
     <ignored path="comp2_asteroids.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +29,8 @@
       <file leaf-file-name="Asteroide.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Asteroide.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
+            <state relative-caret-position="846">
+              <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -59,8 +52,8 @@
       <file leaf-file-name="Colisao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Colisao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+            <state relative-caret-position="90">
+              <caret line="5" column="78" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -69,8 +62,8 @@
       <file leaf-file-name="Nave.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Nave.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -79,11 +72,12 @@
       <file leaf-file-name="Jogo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Jogo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-443">
-              <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+            <state relative-caret-position="259">
+              <caret line="158" column="37" selection-start-line="158" selection-start-column="37" selection-end-line="158" selection-end-column="37" />
               <folding>
-                <element signature="e#320#331#0" expanded="true" />
-                <element signature="e#369#375#0" expanded="true" />
+                <element signature="e#333#344#0" expanded="true" />
+                <element signature="e#455#466#0" expanded="true" />
+                <element signature="e#504#510#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,10 +104,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Nave.java" />
-        <option value="$PROJECT_DIR$/src/Asteroide.java" />
-        <option value="$PROJECT_DIR$/src/Jogo.java" />
         <option value="$PROJECT_DIR$/src/Tiro.java" />
         <option value="$PROJECT_DIR$/src/Colisao.java" />
+        <option value="$PROJECT_DIR$/src/Asteroide.java" />
+        <option value="$PROJECT_DIR$/src/Jogo.java" />
       </list>
     </option>
   </component>
@@ -904,12 +898,12 @@
       <workItem from="1475208454115" duration="1590000" />
       <workItem from="1475442482103" duration="1467000" />
       <workItem from="1475519303165" duration="2978000" />
-      <workItem from="1475524627217" duration="5584000" />
+      <workItem from="1475524627217" duration="10880000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11619000" />
+    <option name="totallyTimeSpent" value="16915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="50" width="1346" height="698" extended-state="0" />
@@ -996,8 +990,9 @@
         <state relative-caret-position="270">
           <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
           <folding>
-            <element signature="e#320#331#0" expanded="true" />
-            <element signature="e#369#375#0" expanded="true" />
+            <element signature="e#333#344#0" expanded="true" />
+            <element signature="e#455#466#0" expanded="true" />
+            <element signature="e#504#510#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1034,8 +1029,9 @@
         <state relative-caret-position="270">
           <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
           <folding>
-            <element signature="e#320#331#0" expanded="true" />
-            <element signature="e#369#375#0" expanded="true" />
+            <element signature="e#333#344#0" expanded="true" />
+            <element signature="e#455#466#0" expanded="true" />
+            <element signature="e#504#510#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1072,8 +1068,9 @@
         <state relative-caret-position="234">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
-            <element signature="e#320#331#0" expanded="true" />
-            <element signature="e#369#375#0" expanded="true" />
+            <element signature="e#333#344#0" expanded="true" />
+            <element signature="e#455#466#0" expanded="true" />
+            <element signature="e#504#510#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1099,35 +1096,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Nave.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="144">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Jogo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-443">
-          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+        <state relative-caret-position="259">
+          <caret line="158" column="37" selection-start-line="158" selection-start-column="37" selection-end-line="158" selection-end-column="37" />
           <folding>
-            <element signature="e#320#331#0" expanded="true" />
-            <element signature="e#369#375#0" expanded="true" />
+            <element signature="e#333#344#0" expanded="true" />
+            <element signature="e#455#466#0" expanded="true" />
+            <element signature="e#504#510#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Colisao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+        <state relative-caret-position="90">
+          <caret line="5" column="78" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Asteroide.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
+        <state relative-caret-position="846">
+          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
           <folding />
         </state>
       </provider>

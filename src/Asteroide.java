@@ -6,7 +6,6 @@ public class Asteroide {
 	int cor;
 	double vx, vy, vr;
 	double dir;
-	boolean vivo;
 	double raio;
 
 	// Relativos diretamente ao sprite
@@ -36,19 +35,43 @@ public class Asteroide {
 
 		this.vx = Math.random() * 300 + 1;
 		this.vy = Math.random() * 300 + 1;
-		//this.vr = Math.random() * 2*Math.PI;
+		this.vr = Math.random() * 2*Math.PI + 0.00001*2*Math.PI;
 		
 		this.cor = (int) Math.round(Math.random() * 10);
-		this.vivo = true;
 	}
-	
-	public void mover(Jogo jogo, double dt) {
-		if(!vivo) {
-			return;
+
+	public Asteroide (double x, double y, double vx, double vy, int tamanho, int cor) {
+		this.x = x;
+		this.y = y;
+		this.vx = vx;
+		this.vy = vy;
+		this.vr = Math.random() * 2*Math.PI + 0.00001*2*Math.PI;
+		this.tamanho = tamanho;
+		this.cor = cor;
+
+		// Define o raio a ser checado nas colisoes como metade do tamanho dos sprites
+		switch (this.tamanho) {
+			case 1:
+				this.raio = 4.0;
+				break;
+			case 2:
+				this.raio = 7.5;
+				break;
+			case 3:
+				this.raio = 16.0;
+				break;
+			case 4:
+				this.raio = 23.5;
+				break;
 		}
+	}
+
+	public void mover(Jogo jogo, double dt) {
 		// Movimentação simples
-		x += vx * dt;
-		y += vy * dt;
+		if (jogo.vivo) { // Asteroides congelados girando em caso de derrota
+			x += vx * dt;
+			y += vy * dt;
+		}
 		// Se asteróide sair da tela, volta do outro lado
 		if(x > jogo.getLargura()) {
 			x = 0;
@@ -65,10 +88,6 @@ public class Asteroide {
 	}
 	
 	public void desenhar(Tela t) {
-		// Não desenha se o asteróide foi destruído
-		if(!vivo) { 
-			return; 
-		}
 		// Corrige o desalinhamento das alturas dos sprites
 		if (tamanho == 1) {
 			ySprite = 4 + (48 * cor);
