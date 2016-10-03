@@ -8,10 +8,14 @@ public class Jogo {
 	Nave nave = new Nave();
 
     // Conjuntos de elementos fora do jogo
-    Set<Tiro> tirosFora = new HashSet<Tiro>();
+	Set<Asteroide> asteroidesFora = new HashSet<Asteroide>();
+	Set<Tiro> tirosFora = new HashSet<Tiro>();
 
 	// Atributos gerais do jogo
+	boolean vivo = true;
 	int vidas = 3;
+	boolean cooldown = false;
+	double cooldownTempo = 0;
 	
 	public Jogo() {
 		// Instancia os asteroides e os adiciona ao hashset
@@ -33,19 +37,38 @@ public class Jogo {
 	}
 	
 	public void tecla(String tecla) {
-		if (tecla.equals(" ")) {
+		if (vivo && !cooldown && tecla.equals(" ")) {
 			tiros.add(new Tiro(nave));
+			cooldown = true;
 		}
 	}
 	
 	public void tique(Set<String> teclas, double dt) {
+		if (vidas <= 0) {
+			vivo = false;
+		}
+
+		// Teste de colisao entre asteroide e nave
+		for (Asteroide asteroide : asteroides) {
+			if (vivo) {
+				if (Colisao.testaColisaoNaveAsteroide(nave, asteroide)) {
+					vidas--;
+					asteroidesFora.add(asteroide);
+					nave = new Nave();
+				}
+			}
+		}
+
 		// Move os asteroides do hashset
-		for (Asteroide asteroide : this.asteroides) {
+		for (Asteroide asteroide : asteroides) {
 			asteroide.mover(this, dt);
 		}
 		// Move os tiros
 		for (Tiro tiro : this.tiros) {
-			tiro.move(dt);
+			tiro.move(this, dt);
+			if (tiro.tiroForaDaTela) {
+				tirosFora.add(tiro);
+			}
 		}
 		
 		nave.move(this, dt);
@@ -64,7 +87,26 @@ public class Jogo {
 		if (teclas.contains("right")) {
 			nave.virarDireita(dt);
 		}
-		
+
+		// Mecanica de cooldown pra evitar spamm de tiros
+		if (cooldown) {
+			cooldownTempo += dt;
+			if (cooldownTempo >= 0.5) {
+				cooldown = false;
+				cooldownTempo = 0;
+			}
+		}
+
+		// Remove os asteroids do hashset
+		asteroides.removeAll(asteroidesFora);
+		if (asteroidesFora.size() > 20) {
+			asteroidesFora = new HashSet<Asteroide>();
+		}
+		// Remove os tiros do hashset
+		tiros.removeAll(tirosFora);
+		if (tirosFora.size() > 20) {
+			tirosFora = new HashSet<Tiro>();
+		}
 	}
 	
 	public void desenhar(Tela tela) {
@@ -78,7 +120,7 @@ public class Jogo {
 		}
 		
 		// Desenha a nave
-		if(this.vidas > 0) {
+		if(vivo) {
 			this.nave.desenhar(tela);
 		}
 	}

@@ -39,14 +39,14 @@ public class Nave {
 		x += vx * dt;
 		y += vy * dt;
 		// Se nave sair da tela, volta do outro lado
-		if(x > jogo.getLargura()) {
-			x = 0;
-		} else if (x < 0) {
+		if(x > jogo.getLargura() + 25) {
+			x = -25;
+		} else if (x < -25) {
 			x = jogo.getLargura();
 		}
-		if(y > jogo.getAltura()) {
-			y = 0;
-		} else if (y < 0) {
+		if(y > jogo.getAltura() + 30) {
+			y = -30;
+		} else if (y < -30) {
 			y = jogo.getAltura();
 		}
 

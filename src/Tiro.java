@@ -3,6 +3,7 @@ public class Tiro {
 	double x, y;
 	double vx, vy;
 	Cor cor;
+	boolean tiroForaDaTela;
 	
 	public Tiro (Nave n) {
 		this.x = n.xBico;
@@ -13,9 +14,13 @@ public class Tiro {
 		this.vy = -700*Math.cos(n.dir) + n.vy;
 	}
 	
-	public void move (double dt) {
+	public void move (Jogo jogo, double dt) {
 		x += vx * dt;
 		y += vy * dt;
+
+		if (x > jogo.getLargura() || x < 0 || y > jogo.getAltura() || y < 0) {
+			tiroForaDaTela = true;
+		}
 	}
 	
 	public void desenhar (Tela t) {
