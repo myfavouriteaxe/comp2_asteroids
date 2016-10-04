@@ -147,10 +147,9 @@ public class Jogo {
 		}
 		// Dois novos asteroides a cada 5 segundos
 		asteroidesSpawnTempo += dt;
-		if (asteroidesSpawnTempo >= 10) {
-			for (int i = 0; i < 2; i++) {
-				asteroidesNovos.add(new Asteroide());
-			}
+		if (vivo && asteroidesSpawnTempo >= 10) {
+			asteroidesNovos.add(new Asteroide(3));
+			asteroidesNovos.add(new Asteroide(4));
 			asteroidesSpawnTempo = 0;
 		}
 

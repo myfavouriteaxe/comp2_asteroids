@@ -40,6 +40,34 @@ public class Asteroide {
 		this.cor = (int) Math.round(Math.random() * 10);
 	}
 
+	public Asteroide (int tamanho) {
+		// Inicializa cada asteróide com valores aleatórios
+		this.x =  Math.random() * 700;
+		this.y =  Math.random() * 500;
+		this.tamanho = tamanho;
+		// Define o raio a ser checado nas colisoes como metade do tamanho dos sprites
+		switch (this.tamanho) {
+			case 1:
+				this.raio = 4.0;
+				break;
+			case 2:
+				this.raio = 7.5;
+				break;
+			case 3:
+				this.raio = 16.0;
+				break;
+			case 4:
+				this.raio = 23.5;
+				break;
+		}
+
+		this.vx = Math.random() * 300 + 1;
+		this.vy = Math.random() * 300 + 1;
+		this.vr = Math.random() * 2*Math.PI + 0.00001*2*Math.PI;
+
+		this.cor = (int) Math.round(Math.random() * 10);
+	}
+
 	public Asteroide (double x, double y, double vx, double vy, int tamanho, int cor) {
 		this.x = x;
 		this.y = y;
