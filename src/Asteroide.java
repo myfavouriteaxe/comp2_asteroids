@@ -11,11 +11,16 @@ public class Asteroide {
 	// Relativos diretamente ao sprite
 	int xSprite, ySprite, largSprite, altSprite;
 		
-	
+	// Variaveis extras de balanceamento
+    int distanciaSpawn = 250;
+
 	public Asteroide () {
 		// Inicializa cada asteróide com valores aleatórios
-		this.x =  Math.random() * 700;
-		this.y =  Math.random() * 500;
+		while (true) { // Garante que o asteroide nao vai aparecer em cima da nave
+            this.x = Math.random() * 700;
+            this.y = Math.random() * 500;
+            if (this.x > distanciaSpawn && this.y > distanciaSpawn) break;
+        }
 		this.tamanho = (int) Math.round(Math.random() * 3) + 1; // Tamanho vai de 1 a 4
 		// Define o raio a ser checado nas colisoes como metade do tamanho dos sprites
 		switch (this.tamanho) {
@@ -42,8 +47,11 @@ public class Asteroide {
 
 	public Asteroide (int tamanho) {
 		// Inicializa cada asteróide com valores aleatórios
-		this.x =  Math.random() * 700;
-		this.y =  Math.random() * 500;
+        while (true) { // Garante que o asteroide nao vai aparecer em cima da nave
+            this.x = Math.random() * 700;
+            this.y = Math.random() * 500;
+            if (this.x > distanciaSpawn && this.y > distanciaSpawn) break;
+        }
 		this.tamanho = tamanho;
 		// Define o raio a ser checado nas colisoes como metade do tamanho dos sprites
 		switch (this.tamanho) {

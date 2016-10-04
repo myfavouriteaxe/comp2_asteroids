@@ -1,3 +1,8 @@
+/*
+    Laboratorios 2 e 3 de Computaçao 2
+    Desenvolvido por Gilberto Lopes
+*/
+
 import java.util.Set;
 import java.util.HashSet;
 public class Jogo {
@@ -12,6 +17,8 @@ public class Jogo {
     // Conjuntos de elementos fora do jogo pra serem removidos
 	Set<Asteroide> asteroidesFora = new HashSet<Asteroide>();
 	Set<Tiro> tirosFora = new HashSet<Tiro>();
+
+    Colisao colisao = new Colisao();
 
 	// Atributos gerais do jogo
 	boolean vivo = true;
@@ -44,6 +51,7 @@ public class Jogo {
 	public void tecla(String tecla) {
 		if (vivo && !cooldown && tecla.equals(" ")) {
 			tiros.add(new Tiro(nave));
+            //Motor.tocar("shoot.wav");
 			cooldown = true;
 		}
 	}
@@ -56,21 +64,23 @@ public class Jogo {
 		for (Asteroide asteroide : asteroides) {
 			// Teste de colisao entre asteroide e nave
 			if (vivo) {
-				if (Colisao.testaColisaoNaveAsteroide(nave, asteroide)) {
+				if (colisao.testaColisaoNaveAsteroide(nave, asteroide)) {
 					vidas--;
 					asteroidesDestruidos++;
 					asteroidesFora.add(asteroide);
-					nave = new Nave();
+					//Motor.tocar("explosion.wav");
+                    nave = new Nave();
 				}
 			}
 
 			// Teste de colisao entre tiro e asteroide
 			for (Tiro tiro : tiros) {
-				if (Colisao.testaColisaoTiroAsteroide(tiro, asteroide)) {
+				if (colisao.testaColisaoTiroAsteroide(tiro, asteroide)) {
 					//pontos += 20;
 					asteroidesDestruidos++;
 					asteroidesFora.add(asteroide);
 					tirosFora.add(tiro);
+                    //Motor.tocar("explosion.wav");
 					switch (asteroide.tamanho) {
 						// Pontuaçao maior quanto menor for o asteroide
 						case 1:
